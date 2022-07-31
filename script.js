@@ -77,19 +77,41 @@ startGame();
  */
 let calcResult = (playerMove, computerMove) => {
     let result = "";
-    //TIE
+    let rock =  "Rock";
+    let paper = "Paper";
+    let scissors = "Scissors";
+
+     //TIE
     if (playerMove == computerMove) {
         result = tieMsg;
     }
-    //PLAYER WINS
-    else if (playerMove == "Rock" && computerMove == "Scissors" || playerMove == "Scissors" && computerMove == "Paper") {
-        result = winMsg;
+    //player plays rock
+    else if(playerMove == rock){
+        if(computerMove == scissors){
+            result = winMsg;
+        }
+        else if(computerMove == paper){
+            result = loseMsg;
+        }
     }
-    //PLAYER LOSES 
-    else if (playerMove == "Scissors" && computerMove == "Rock" || playerMove == "Paper" && computerMove == "Scissors") {
-        result = loseMsg;
-    }
-
+    //player plays paper
+    else if(playerMove == paper){
+        if(computerMove == rock){
+            result = winMsg;
+        }
+        else if(computerMove == scissors){
+            result = loseMsg;
+        }
+    }    
+    //player plays scissors
+    else if(playerMove == scissors){
+        if(computerMove == paper){
+            result = winMsg;
+        }
+        else if(computerMove == rock){
+            result = loseMsg;
+        }
+    }  
 
     return result;
 };
@@ -103,5 +125,3 @@ let randomMove = () => {
 
     return randomeMove;
 };
-
-
